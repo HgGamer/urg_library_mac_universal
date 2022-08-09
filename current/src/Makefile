@@ -5,8 +5,8 @@
 CC = gcc
 CXX = g++
 #CFLAGS = -O2 -Wall -Werror -W $(INCLUDES)
-CFLAGS = -g -O0 -Wall -Werror -W -I../include/c $(INCLUDES)
-CXXFLAGS = $(CFLAGS) -I../include/cpp
+CFLAGS = -g -O0 -Wall -Werror -W -I../include/c $(INCLUDES) -arch x86_64 -arch arm64
+CXXFLAGS = $(CFLAGS) -I../include/cpp -arch x86_64 -arch arm64
 INCLUDES =
 LDFLAGS =
 LDLIBS =
@@ -24,8 +24,8 @@ OBJ_C = urg_sensor.o urg_utils.o urg_debug.o urg_connection.o \
         urg_ring_buffer.o urg_serial.o urg_serial_utils.o urg_tcpclient.o
 OBJ_CPP = ticks.o Urg_driver.o
 
-CFLAGS = -g -O2 $(INCLUDES) -I../include/c -fPIC
-CXXFLAGS = $(CFLAGS) -I../include/cpp
+CFLAGS = -g -O2 $(INCLUDES) -I../include/c -fPIC -arch x86_64 -arch arm64 
+CXXFLAGS = $(CFLAGS) -I../include/cpp -arch x86_64 -arch arm64
 LDLIBS = -lm $(shell if test `echo $(OS) | grep Windows`; then echo "-lwsock32 -lsetupapi"; fi)
 
 all : $(TARGET)
